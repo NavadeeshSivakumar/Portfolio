@@ -1,0 +1,81 @@
+#works {
+  margin: 0 auto;
+  min-height: calc(100vh - 4rem);
+  width: 100vw;
+  max-width: 60rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.worksTitle {
+  margin: 1rem 0;
+  font-size: 3rem;
+}
+
+.worksDesc {
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.worksImgs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  max-width: 65rem;
+  flex-wrap: wrap;
+}
+
+.worksImg {
+  object-fit: cover;
+  height: 20rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+
+.worksBtn {
+  padding: 0.5rem 2.5rem;
+  background-color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1rem;
+  margin: 3rem 0;
+}
+
+@media screen and (max-width: 585px) {
+  .worksImg {
+    height: 50vw;
+  }
+}
+
+/* hover */
+.worksImgContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 200;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.worksImgContainer:hover .description {
+    opacity: 1;
+}
