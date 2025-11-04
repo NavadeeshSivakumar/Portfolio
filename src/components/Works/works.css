@@ -22,6 +22,7 @@
 }
 
 .worksImgs {
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +54,6 @@
   }
 }
 
-/* hover */
 .worksImgContainer {
     position: relative;
     display: inline-block;

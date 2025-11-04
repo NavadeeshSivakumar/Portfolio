@@ -1,50 +1,10 @@
-// import React from "react";
-// import "./works.css";
-// import leaf from "./leaf.jpg";
-// import content from "./content.jpg";
-// import movie from "./movie.jpg";
-// import milk from "./milk.png";
-
-// const Works = () => {
-//   const descriptions = {
-//     leaf: "Description for proleafic",
-//     content: "Description for content",
-//     movie: "Description for movie",
-//     milk: "Description for diary",
-//   };
-
-//   return (
-//     <section id="works">
-//       <h2 className="worksTitle">What I Did</h2>
-//       <span className="worksDesc">
-//         Here are my few works!
-//         <div className="worksImgs">
-//           <img src={leaf} alt={descriptions.leaf} className="worksImg" />
-//           <img src={content} alt={descriptions.content} className="worksImg" />
-//           <img src={movie} alt={descriptions.movie} className="worksImg" />
-//           <img src={milk} alt={descriptions.milk} className="worksImg" />
-//           {
-//             //   <img src="" alt="" className="worksImg"/>
-//             //   <img src="" alt="" className="worksImg"/>
-//           }
-//         </div>
-//         {
-//           // <button className="worksBtn">See More</button>
-//         }
-//       </span>
-//     </section>
-//   );
-// };
-
-// export default Works;
-
-
 import React from "react";
 import "./works.css";
 import leaf from "./leaf.jpg";
 import content from "./content.jpg";
 import movie from "./movie.jpg";
-import milk from "./milk.png";
+import et from "./et.jpg"
+
 
 const Works = () => {
 
@@ -52,8 +12,8 @@ const Works = () => {
     leaf: "An online platform designed to support novice farmers in optimizing plant health and cultivation practices, utilizing state-of-the-art technology and comprehensive resources.",
     content: "A prototype of a social media application inspired by Intsagram, showcasing innovative features and functionalities aimed at simluating a user-friendly and engaging experience.",
     movie: "A rudimentary console based application incorporating object oriented programming principles to facilitate comprehensive movie rental system operations, seamlessly integrated with a graphical user interface (GUI) for enhanced user interaction and experience.",
-    milk: "A intermediate level moblie application tailored for seamless management of all facet related to the procurement, sale, and upkeep of diary products."
-  };
+    et: "An AI-powered personal finance app that automatically analyzes, categorizes, and predicts your spending habits to help you manage money smarter and achieve your financial goals effortlessly."
+  }
 
   return (
     <section id="works">
@@ -75,14 +35,10 @@ const Works = () => {
             <p className="description"><h1>MOVIE RENTAL SYSTEM</h1>{descriptions.movie}<h5>Database design and Development - MySQL, Java.</h5></p>
           </div>
           <div className="worksImgContainer">
-            <img src={milk} alt={descriptions.milk} className="worksImg" />
-            <p className="description"><h1>DIARY MANAGEMENT SYSTEM</h1>{descriptions.milk}<h5>Backend Developer - JS+React Native Development.</h5></p>
+            <img src={et} alt={descriptions.et} className="worksImg" />
+            <p className="description"><h1>SMART EXPENSE TRACKER</h1>{descriptions.et}<h5>Full Stack Developer - MySQL, Java, AI/ML.</h5></p>
           </div>
         </div>
-        {
-            //   <img src="" alt="" className="worksImg"/>
-            //   <img src="" alt="" className="worksImg"/>
-        }
       </span>
     </section>
   );

@@ -1,4 +1,3 @@
-import React from "react";
 import "./intro.css";
 import computer from "./computer.gif";
 
@@ -17,14 +16,6 @@ const Intro = () => {
           further develop <br />skills and 
           contribute to the software industry
         </p>
-        {
-          //     <Link>
-          //   <button className="btn">
-          //     <img src={hire} alt="" className="btnImg" />
-          //     hello!
-          //   </button>
-          // </Link>
-        }
       </div>
       <img src={computer} alt="profile" className="bg" />
     </section>

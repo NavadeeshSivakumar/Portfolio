@@ -1,8 +1,7 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import "./contact.css";
 import resume from "./documents.png";
 import git from "./github.png";
-// import insta from "./instagram.png";
 import linkedin from "./linkedin.png";
 import emailjs from "@emailjs/browser";
 
@@ -36,7 +35,8 @@ const Contact = () => {
         </p>
         <br/>
         <a
-          href="https://drive.google.com/uc?export=download&id=1aKudKN_q7xcMvDY8EkvvNz1Aq-yt_ajY"
+          href="https://drive.google.com/uc?export=download&id=1h2ga8MER6SO-JaOHs7exg7cAccHFWqnp"
+          
           download
         >
           <img src={resume} alt="resume" className="resumeImg" />
@@ -74,11 +74,6 @@ const Contact = () => {
             <a href="https://www.linkedin.com/in/navadeesh-sivakumar-70b854226">
               <img src={linkedin} alt="linkedin" className="link" />
             </a>
-            {
-              // <a href="https://www.instagram.com/navadeesh.ds?igsh=MW5pNGt2cm00OHBjcA==">
-              // <img src={insta} alt="instagram" className="link" />
-              // </a>
-            }
           </div>
         </form>
       </div>

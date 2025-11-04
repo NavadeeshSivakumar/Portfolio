@@ -1,11 +1,11 @@
-import React from "react";
 import "./tool.css";
 import aws from './aws.png'
-// import git from './git.png'
 import github from './github.png'
 import postman from './postman.jpg'
 import spring from './springboot.png'
 import vscode from './vscode.jpeg'
+import pa from './paloalto.jpg'
+import zscaler from './zscaler.png'
 
 
 const Tool = () => {
@@ -30,15 +30,6 @@ const Tool = () => {
             <p>I'm skilled in using GitHub for version control and collaboration in software development.</p>
           </div>
         </div>
-        {
-        //   <div className="skillBar">
-        //   <img src={git} alt="GIT" className="skillBarImg" />
-        //   <div className="skillBarText">
-        //     <h2>GIT</h2>
-        //     <p>I'm adept at using Git for version control, allowing for efficient tracking and management of changes in software development projects.</p>
-        //   </div>
-        // </div>
-      }
         <div className="skillBar">
           <img src={postman} alt="POSTMAN" className="skillBarImg" />
           <div className="skillBarText">
@@ -58,6 +49,20 @@ const Tool = () => {
           <div className="skillBarText">
             <h2>AWS</h2>
             <p>I'm skilled in utilizing AWS, Amazon's cloud computing platform, for scalable and reliable application deployment and management.</p>
+          </div>
+        </div>
+        <div className="skillBar">
+          <img src={pa} alt="PALO ALTO" className="skillBarImg" />
+          <div className="skillBarText">
+            <h2>PALO ALTO</h2>
+            <p>A leading security platform offering next-generation firewalls and advanced threat protection for secure network operations.</p>
+          </div>
+        </div>
+        <div className="skillBar">
+          <img src={zscaler} alt="ZSCALER" className="skillBarImg" />
+          <div className="skillBarText">
+            <h2>ZSCALER</h2>
+            <p>A cloud-based security solution providing zero-trust access and secure internet connectivity for users and applications.</p>
           </div>
         </div>
       </div>

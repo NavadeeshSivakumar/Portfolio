@@ -2,19 +2,12 @@ import React, { useState } from "react";
 import "./navbar.css";
 import { Link } from "react-scroll";
 import contact from "./contact.jpg";
-// import logo from "./logo.jpg";
 import menu from "./menu.png";
 import me from "./profile.jpg";
 import fme from "./fprofile.jpg";
 
 const Navbar = () => {
-  // const [variableName, setvariableName] = useState();
   const [showMenu, setShowMenu] = useState(false);
-
-  // function expandImage() {
-  //   const fullImage = document.querySelector('.full-image-container');
-  //   fullImage.style.display = 'block';
-  // }
 
   function expandImage() {
     const fullImage = document.querySelector(".full-image-container");
