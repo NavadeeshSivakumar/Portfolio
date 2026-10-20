@@ -37,7 +37,7 @@ const Contact = () => {
         </p>
 
         <a
-          href="https://drive.google.com/uc?export=download&id=1foRwRvxuo5oqB3ckBiOYKyy1zSTsUq4S"
+          href="https://drive.google.com/uc?export=download&id=1y1wTvLOUUeCoywnPUlE_gSSGHYyM7MiJ"
           className="resumeLink"
           aria-label="Download my resume"
           target="_blank"
@@ -92,7 +92,7 @@ const Contact = () => {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/navadeesh-sivakumar-70b854226"
+              href="https://www.linkedin.com/in/navadeesh-sivakumar"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn profile"
