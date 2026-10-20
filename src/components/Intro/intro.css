@@ -1,8 +1,9 @@
 #intro {
-  height: calc(100vh - 4rem);
-  width: 100vw;
-  max-width: 75rem;
+  min-height: auto;
+  width: 100%;
+  max-width: 78rem;
   margin: 0 auto;
+  padding: 2rem 0 3rem;
   overflow: hidden;
   position: relative;
 }
@@ -14,64 +15,342 @@
   z-index: -1;
   object-fit: cover;
   height: 100vh;
+  opacity: 0.12;
+  filter: blur(1px) grayscale(0.3);
+}
+
+.introInner {
+  min-height: auto;
+  width: 100%;
+  padding: 2rem 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
 }
 
 .introContent {
-  height: 100vh;
-  width: 100vw;
-  padding: 2rem;
+  flex: 1 1 25rem;
+  max-width: 32rem;
   font-size: 3rem;
   font-weight: 700;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  color: var(--text-primary);
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  color: var(--accent-light);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  background: var(--accent-glow);
+  border-radius: 2rem;
+  padding: 0.4rem 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.statusDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+
+  background: var(--accent);
+  box-shadow: 0 0 0.5rem var(--accent);
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.75);
+  }
 }
 
 .hello {
   font-size: 1.5rem;
-  font-weight: 100;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+.introText {
+  line-height: 1.2;
 }
 
 .introName {
-  color: #9acd32;
+  color: var(--accent-light);
 }
 
 .introPara {
-  font-size: medium;
+  font-size: 1rem;
   font-weight: 300;
-  /* letter-spacing: 1px; */
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
 }
 
-.btn {
-  background: white;
-  margin: 1rem 0;
-  padding: o.75rem 1.5rem;
-  border: none;
-  border-radius: 2rem;
+/* ---- Terminal card ---- */
+
+.terminalCard {
+  flex: 1 1 28rem;
+  max-width: 32rem;
+  width: 100%;
+
+  background: #13121d;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: 0.75rem;
+
+  box-shadow:
+    0 0 3rem -0.75rem rgba(139, 92, 246, 0.25),
+    0 1.25rem 3rem rgba(0, 0, 0, 0.45);
+
+  overflow: hidden;
+  position: relative;
 }
 
-.btnImg {
-  object-fit: cover;
-  margin: 0 0.5rem;
-  height: 2rem;
-  width: 2rem;
-  border-radius: 2rem;
+.terminalCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(196, 181, 253, 0.018) 0px,
+    rgba(196, 181, 253, 0.018) 1px,
+    transparent 1px,
+    transparent 3px
+  );
 }
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.7rem 1rem;
+  background: #1c1b29;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.terminalDot {
+  width: 0.65rem;
+  height: 0.65rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.terminalDot.red {
+  background: #ff5f57;
+}
+
+.terminalDot.yellow {
+  background: #febc2e;
+}
+
+.terminalDot.green {
+  background: #28c840;
+}
+
+.terminalTitle {
+  margin-left: 0.6rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.terminalBody {
+  padding: 1.4rem 1.5rem 1.8rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  line-height: 1.75;
+
+  min-height: 18rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 0;
+
+  color: var(--text-primary);
+}
+
+.termCmd {
+  color: var(--accent-light);
+  font-weight: 700;
+}
+
+.termOut {
+  color: rgba(244, 241, 255, 0.78);
+  padding-left: 1rem;
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.5rem;
+  height: 1rem;
+
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: middle;
+
+  animation: blinkCursor 1s steps(1) infinite;
+}
+
+@keyframes blinkCursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---- Tablet ---- */
+
+@media screen and (max-width: 1000px) {
+  .introInner {
+    gap: 2.5rem;
+    padding: 2rem;
+  }
+
+  .introContent {
+    flex-basis: 22rem;
+  }
+
+  .terminalCard {
+    flex-basis: 25rem;
+  }
+
+  .terminalBody {
+    padding: 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* ---- Mobile ---- */
 
 @media screen and (max-width: 840px) {
+  #intro {
+    min-height: auto;
+  }
+
   .bg {
     display: none;
   }
-  .introContent {
-    font-size: 10vw;
+
+  .introInner {
+    min-height: auto;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 1.5rem;
   }
+
+  .introContent {
+    flex: initial;
+    width: 100%;
+    max-width: 36rem;
+
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    text-align: center;
+    align-items: center;
+  }
+
+  .statusPill {
+    align-self: center;
+    font-size: 0.65rem;
+  }
+
   .hello {
-    font-size: 4.5vw;
+    font-size: 1.3rem;
+  }
+
+  .introPara {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .terminalCard {
+    flex: initial;
+    width: 100%;
+    max-width: 32rem;
+  }
+
+  .terminalBody {
+    font-size: 0.8rem;
+    min-height: 14rem;
   }
 }
 
+/* ---- Small mobile ---- */
+
 @media screen and (max-width: 480px) {
-    .bg {
-        display: none;
-    }
+  .introInner {
+    padding: 2.5rem 1rem;
+    gap: 1.75rem;
   }
+
+  .introContent {
+    font-size: 2.5rem;
+  }
+
+  .hello {
+    font-size: 1.15rem;
+  }
+
+  .introPara {
+    font-size: 0.88rem;
+  }
+
+  .terminalCard {
+    max-width: 100%;
+  }
+
+  .terminalHeader {
+    padding: 0.65rem 0.8rem;
+  }
+
+  .terminalBody {
+    font-size: 0.7rem;
+    line-height: 1.8;
+    padding: 1rem;
+    min-height: 12rem;
+  }
+
+  .terminalTitle {
+    font-size: 0.65rem;
+  }
+}
+
+/* ---- Accessibility ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .statusDot,
+  .cursor {
+    animation: none;
+  }
+}

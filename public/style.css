@@ -1,3 +1,4 @@
+/* Global reset */
 * {
   margin: 0;
   padding: 0;
@@ -7,9 +8,49 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Midnight Violet theme */
+:root {
+  --bg-primary: #101018;
+  --bg-surface: #1c1b29;
+  --bg-surface-hover: #252338;
+
+  --accent: #8b5cf6;
+  --accent-light: #c4b5fd;
+  --accent-glow: rgba(139, 92, 246, 0.18);
+
+  --text-primary: #f4f1ff;
+  --text-secondary: #aaa6bd;
+
+  --border-color: rgba(196, 181, 253, 0.14);
+}
+
+/* Page defaults */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: #1e1e1e;
-  color: white;
-  overflow: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
   overflow-y: scroll;
+}
+
+/* Text selection */
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

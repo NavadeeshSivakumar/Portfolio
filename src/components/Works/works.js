@@ -1,45 +1,84 @@
-import React from "react";
+import { useRef } from "react";
 import "./works.css";
-import leaf from "./leaf.jpg";
-import content from "./content.jpg";
-import movie from "./movie.jpg";
-import et from "./et.jpg"
+import useScrollReveal from "../Scroll/useScrollReveal";
+import defaultImg from "./image.png";
 
+const projects = [
+  {
+    img: defaultImg,
+    title: "Expense Tracker Web App",
+    role: "Full Stack Developer",
+    description:
+      "Full-stack expense management system with a multi-agent AI pipeline; three specialised LangChain/LangGraph agents collaboratively analyse spending patterns, recommend reductions, and generate personalised savings plans.",
+    tags: ["Python", "React", "Flask", "MySQL", "LangChain", "LangGraph"],
+  },
+  {
+    img: defaultImg,
+    title: "Indian Politics Analyst — RAG Console App",
+    role: "AI Engineer",
+    description:
+      "CLI-based RAG system using Sentence Transformers for semantic search and Groq's LLaMA 3.3 70B for contextual Q&A, over a curated knowledge base on Indian and Tamil Nadu politics.",
+    tags: ["Python", "Sentence Transformers", "Groq API", "LLaMA 3.3 70B"],
+  },
+  {
+    img: defaultImg,
+    title: "Financial Distress Prediction System",
+    role: "ML Engineer",
+    description:
+      "Prediction model using Random Forest, Decision Trees, and KNN with network analysis techniques, achieving 90% accuracy; validated using ROC curve, precision, and recall metrics.",
+    tags: ["Python", "Scikit-learn", "MySQL"],
+  },
+];
 
 const Works = () => {
-
-  const descriptions = {
-    leaf: "An online platform designed to support novice farmers in optimizing plant health and cultivation practices, utilizing state-of-the-art technology and comprehensive resources.",
-    content: "A prototype of a social media application inspired by Intsagram, showcasing innovative features and functionalities aimed at simluating a user-friendly and engaging experience.",
-    movie: "A rudimentary console based application incorporating object oriented programming principles to facilitate comprehensive movie rental system operations, seamlessly integrated with a graphical user interface (GUI) for enhanced user interaction and experience.",
-    et: "An AI-powered personal finance app that automatically analyzes, categorizes, and predicts your spending habits to help you manage money smarter and achieve your financial goals effortlessly."
-  }
+  const revealRef = useRef(null);
+  useScrollReveal(revealRef);
 
   return (
-    <section id="works">
-      <h2 className="worksTitle">What I Did</h2>
-      <span className="worksDesc">
-      "Explore my collection of projects, each offering a glimpse into my diverse skills and expertise. From designs to developments, there's something for everyone to discover and enjoy."
-        <div className="worksImgs">
-          <div className="worksImgContainer">
-            <img src={leaf} alt={descriptions.leaf} className="worksImg" />
-            <p className="description"><h1>PROLEAFIC</h1>{descriptions.leaf}<h5>Front-end Developer.
-            Winner of Best Sustainable Hack at Hack@Skcet from over 400+ submissions.</h5></p>
+    <section id="works" ref={revealRef}>
+      <h2 className="worksTitle" data-reveal>
+        What I Did
+      </h2>
+      <p
+        className="worksDesc"
+        data-reveal
+        style={{ "--reveal-delay": "80ms" }}
+      >
+        "Explore my collection of projects, each offering a glimpse into my
+        diverse skills and expertise. From designs to developments, there's
+        something for everyone to discover and enjoy."
+      </p>
+
+      <div className="worksGrid">
+        {projects.map((project, index) => (
+          <div
+            className="workCard"
+            key={project.title}
+            data-reveal
+            style={{ "--reveal-delay": `${140 + index * 140}ms` }}
+          >
+            <div className="workCardImgWrap">
+              <img
+                src={project.img}
+                alt={project.title}
+                className="workCardImg"
+              />
+            </div>
+            <div className="workCardBody">
+              <h3 className="workCardTitle">{project.title}</h3>
+              <span className="workCardRole">{project.role}</span>
+              <p className="workCardDesc">{project.description}</p>
+              <div className="workCardTags">
+                {project.tags.map((tag) => (
+                  <span className="workTag" key={tag}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="worksImgContainer">
-            <img src={content} alt={descriptions.content} className="worksImg" />
-            <p className="description"><h1>CONTENT MANAGEMENT APPLICATION</h1>{descriptions.content}<h5>Full Stack Developer - SpringBoot, MySQL, React.</h5></p>
-          </div>
-          <div className="worksImgContainer">
-            <img src={movie} alt={descriptions.movie} className="worksImg" />
-            <p className="description"><h1>MOVIE RENTAL SYSTEM</h1>{descriptions.movie}<h5>Database design and Development - MySQL, Java.</h5></p>
-          </div>
-          <div className="worksImgContainer">
-            <img src={et} alt={descriptions.et} className="worksImg" />
-            <p className="description"><h1>SMART EXPENSE TRACKER</h1>{descriptions.et}<h5>Full Stack Developer - MySQL, Java, AI/ML.</h5></p>
-          </div>
-        </div>
-      </span>
+        ))}
+      </div>
     </section>
   );
 };

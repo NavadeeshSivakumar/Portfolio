@@ -5,5 +5,5 @@ This repository contains the source code for my personal portfolio website, show
 Features
 ✔️ Responsive design
 ✔️ Project showcase
-✔️ Skills and Tools showcase
+✔️ Skills showcase
 ✔️ Contact form

@@ -1,76 +1,201 @@
 #skills {
-  overflow: hidden;
-  width: 100vw;
-  max-width: 65rem;
+  width: 100%;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  margin: 0 auto;
+  overflow: hidden;
+}
+
+.sectionEyebrow {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--accent-light);
+  text-transform: lowercase;
+  margin-bottom: 0.5rem;
 }
 
 .skillTitle {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 600;
-  padding-top: 3rem;
-  margin-bottom: 1.5rem;
+  margin: 0 0 0.75rem;
+  color: var(--text-primary);
 }
 
 .skillDesc {
-    font-weight: 300;
-    font-size: 1rem;
-    max-width: 50rem;
-    padding: 0 2rem;
+  max-width: 38rem;
+  padding: 0 1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.skillBars {
-    margin: 1.5rem;
-    width: 100vw;
-    max-width: 80%;
-    text-align: left;
-/* scroll */
-    max-height: 400px; 
-    overflow-y: auto; 
+/* Skill categories */
+
+.skillGroups {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.skillBar {
-    display: flex;
-    margin: 1rem;
-    padding: 1.5rem 2rem;
-    border-radius: 0.5rem;
-    background: rgb(50, 50, 50);
+.skillGroup {
+  width: 100%;
+  text-align: left;
 }
 
-.skillBarImg {
-    object-fit: cover;
-    height: 3rem;
-    width: 3rem;
-    margin-right: 2rem;
+.skillGroupHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
-.skillBarText> p {
-    font-size: 1rem;
-    font-weight: 200;
+.skillGroupLabel {
+  margin: 0;
+  color: var(--accent-light);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-@media screen and (max-width:720px) {
-    .skillBarText>p {
-        font-size: 2vw;
-    }
+.skillGroupLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(139, 92, 246, 0.55),
+    rgba(139, 92, 246, 0)
+  );
 }
 
-@media screen and (max-width:480px) {
-    .skillBarText>p {
-        font-size: 3vw;
-    }
+/* Compact technology chips */
 
-    .skillBarImg {
-        height: 2.25rem;
-        width: 2.25rem;
-    }
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
 
-    .skillBarText>h2 {
-        font-size: 5vw;
-    }
+.skillChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.8rem;
+
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.skillChip:hover {
+  border-color: rgba(139, 92, 246, 0.55);
+  background: var(--accent-glow);
+  box-shadow: 0 0 1rem rgba(139, 92, 246, 0.08);
+  transform: translateY(-2px);
+}
+
+.skillIcon,
+.skillInitials {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+}
+
+.skillIcon {
+  object-fit: contain;
+}
+
+.skillInitials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--accent-light);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.skillName {
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Responsive layout */
+
+@media screen and (max-width: 720px) {
+  #skills {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .skillTitle {
+    font-size: 2.1rem;
+  }
+
+  .skillGroups {
+    gap: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #skills {
+    padding: 2rem 1rem;
+  }
+
+  .skillTitle {
+    font-size: 1.8rem;
+  }
+
+  .skillDesc {
+    font-size: 0.9rem;
+  }
+
+  .skillList {
+    gap: 0.5rem;
+  }
+
+  .skillChip {
+    padding: 0.45rem 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .skillName {
+    font-size: 0.78rem;
+  }
+
+  .skillIcon,
+  .skillInitials {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skillChip {
+    transition: none;
+  }
+
+  .skillChip:hover {
+    transform: none;
+  }
 }

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import "./contact.css";
-import resume from "./documents.png";
+import { FileText } from "lucide-react";
 import git from "./github.png";
 import linkedin from "./linkedin.png";
 import emailjs from "@emailjs/browser";
@@ -18,6 +18,7 @@ const Contact = () => {
       .then(
         () => {
           console.log("SUCCESS!");
+          form.current.reset();
         },
         (error) => {
           console.log("FAILED...", error.text);
@@ -29,50 +30,74 @@ const Contact = () => {
     <section id="contactPage">
       <div id="resume">
         <h1 className="contactPageTitle">My Resume</h1>
+
         <p className="resumeDesc">
-          "Explore my professional synopsis, presenting a comprehensive overview
-          of my skills, experience, and achievements."
+          Explore my professional background, skills, experience, and
+          achievements in one place.
         </p>
-        <br/>
+
         <a
-          href="https://drive.google.com/uc?export=download&id=1h2ga8MER6SO-JaOHs7exg7cAccHFWqnp"
-          
-          download
+          href="https://drive.google.com/uc?export=download&id=1foRwRvxuo5oqB3ckBiOYKyy1zSTsUq4S"
+          className="resumeLink"
+          aria-label="Download my resume"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <img src={resume} alt="resume" className="resumeImg" />
+          <FileText className="resumeIcon" strokeWidth={1.5} />
         </a>
       </div>
+
       <div id="contact">
         <h1 className="contactPageTitle">Contact Me</h1>
+
         <span className="contactDesc">Your Message Matters</span>
+
         <form className="contactForm" ref={form} onSubmit={sendEmail}>
           <input
             type="text"
             className="name"
             placeholder="Your Name"
             name="from_name"
+            required
           />
+
           <input
             type="email"
             className="email"
             placeholder="Your Email"
             name="from_email"
+            required
           />
+
           <textarea
             name="message"
             rows={5}
             placeholder="Your Message"
             className="msg"
-          ></textarea>
-          <button type="submit" value="Send" className="submitBtn">
+            required
+          />
+
+          <button type="submit" className="submitBtn">
             Submit
           </button>
+
           <div className="links">
-            <a href="https://github.com/NavadeeshSivakumar">
-              <img src={git} alt="github" className="link" />
+            <a
+              href="https://github.com/NavadeeshSivakumar"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+            >
+              <img src={git} alt="GitHub" className="link" />
             </a>
-            <a href="https://www.linkedin.com/in/navadeesh-sivakumar-70b854226">
-              <img src={linkedin} alt="linkedin" className="link" />
+
+            <a
+              href="https://www.linkedin.com/in/navadeesh-sivakumar-70b854226"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
+            >
+              <img src={linkedin} alt="LinkedIn" className="link" />
             </a>
           </div>
         </form>

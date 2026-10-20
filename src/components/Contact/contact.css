@@ -1,84 +1,236 @@
 #contactPage {
-    min-height: calc(100vh - 4rem);
-    width: 100vw;
-    max-width: 60rem;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  min-height: calc(100vh - 4rem);
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 3rem 1rem 5rem;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .contactPageTitle {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .resumeDesc {
-    font-weight: 300;
-    font-size: 1rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
-.resumeImg {
-    margin: 1rem 0;
-    display: flex;
-    object-fit: cover;
-    width: 15%;
-    min-width: 9rem;
-    margin: auto;
-    padding: 0.25rem;
-}
-
+/* Resume section */
 #resume {
-    padding: 2rem;
+  width: 100%;
+  padding: 2rem 1rem 5rem;
+}
+
+.resumeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 8rem;
+  height: 8rem;
+  margin: 3rem auto 0;
+
+  background: #211b35;
+  border: 1px solid var(--border-color);
+  border-radius: 1.5rem;
+
+  color: #a78bfa;
+  text-decoration: none;
+
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.resumeLink:hover {
+  transform: translateY(-5px);
+  background: #29213f;
+  border-color: var(--accent);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.2);
+}
+
+.resumeLink:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 4px;
+}
+
+.resumeIcon {
+  width: 4rem;
+  height: 4rem;
+  color: #a78bfa;
+}
+
+/* Contact section */
+#contact {
+  width: 100%;
+  padding: 2rem 0rem 2rem;
+  scroll-margin-top: 5rem;
 }
 
 .contactDesc {
-    padding: 1rem;
-    font-size: medium;
-    font-weight: 300;
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: medium;
+  font-weight: 300;
+  color: var(--text-secondary);
 }
 
 .contactForm {
-    margin: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 90vw;
-    max-width: 60rem;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 40rem;
 }
 
-.name,.email,.msg {
-    font-size: medium;
-    width: 100%;
-    max-width: 40rem;
-    margin: 0.5rem;
-    padding: 0.5rem 1rem;
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    background-color: rgb(40, 40, 40);
+.name,
+.email,
+.msg {
+  font-family: inherit;
+  font-size: medium;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.85rem 1rem;
+
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--bg-surface);
+
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.name:focus,
+.email:focus,
+.msg:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.name::placeholder,
+.email::placeholder,
+.msg::placeholder {
+  color: var(--text-secondary);
+}
+
+.msg {
+  resize: vertical;
 }
 
 .submitBtn {
-    background: white;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 3.5rem; 
-    margin: 2rem;
-    cursor: pointer;
+  background: var(--accent);
+  color: #ffffff;
+  border: 1px solid rgba(196, 181, 253, 0.25);
+  border-radius: 0.6rem;
+
+  padding: 0.75rem 3.5rem;
+  margin: 1.5rem 0;
+
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
+.submitBtn:hover {
+  background: #7c3aed;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.25);
+}
+
+.submitBtn:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+}
+
+/* Social links */
 .links {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
 .link {
-    object-fit: cover;
-    height: 3rem;
-    width: 3rem;
-    margin: 0 0.75rem;
+  display: block;
+  object-fit: cover;
+  height: 3rem;
+  width: 3rem;
+  margin: 0 0.25rem;
+  transition: transform 0.2s ease;
+}
+
+.links a:hover .link {
+  transform: translateY(-3px);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  #contactPage {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .contactPageTitle {
+    font-size: 2.25rem;
+  }
+
+  #resume {
+    padding: 2rem 0 4rem;
+  }
+
+  .resumeDesc {
+    font-size: 0.95rem;
+  }
+
+  .resumeLink {
+    width: 7rem;
+    height: 7rem;
+    margin-top: 2rem;
+  }
+
+  .resumeIcon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  #contact {
+    padding: 2rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resumeLink,
+  .submitBtn,
+  .link {
+    transition: none;
+  }
 }

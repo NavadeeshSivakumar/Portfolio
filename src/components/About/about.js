@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import "./about.css";
+import useScrollReveal from "../Scroll/useScrollReveal";
 import html from "./html.png";
 import css from "./css.png";
 import react from "./react.png";
@@ -7,63 +9,104 @@ import springboot from "./springboot.png";
 import postgres from "./postgres.png";
 import mysql from "./mysql.png";
 
+const skillGroups = [
+  {
+    category: "Backend",
+    items: [
+      { name: "Python" },
+      { img: java, name: "Java" },
+      { img: springboot, name: "Spring Boot" },
+      { name: "FastAPI" },
+      { name: "Flask" },
+    ],
+  },
+  {
+    category: "AI / ML",
+    items: [
+      { name: "LangChain" },
+      { name: "LangGraph" },
+      { name: "RAG Pipelines" },
+      { name: "Sentence Transformers" },
+      { name: "Scikit-learn" },
+    ],
+  },
+  {
+    category: "Frontend",
+    items: [
+      { img: react, name: "React" },
+      { name: "JavaScript" },
+      { img: html, name: "HTML" },
+      { img: css, name: "CSS" },
+    ],
+  },
+  {
+    category: "Database",
+    items: [
+      { img: postgres, name: "PostgreSQL" },
+      { img: mysql, name: "MySQL" },
+    ],
+  },
+];
+
+const getInitials = (name) =>
+  name
+    .split(/[\s-]+/)
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
 const About = () => {
+  const revealRef = useRef(null);
+  useScrollReveal(revealRef);
+
   return (
-    <section id="skills">
-      <span className="skillTitle">What I Know</span>
-      <span className="skillDesc">
-      "Embark on a journey through my versatile skill set, navigating through the realms of web development, database management, and backend frameworks. Each skill serves as a foundation, contributing to the depth and breadth of my expertise in crafting tailored solutions for various challenges."
-      </span>
-      <div className="skillBars">
-        <div className="skillBar">
-          <img src={html} alt="HTML" className="skillBarImg" />
-          <div className="skillBarText">
-            <h2>HTML</h2>
-            <p>HTML, the foundation of web development, structures content on the internet through tags and attributes.</p>
+    <section id="skills" ref={revealRef}>
+      {/* <span className="sectionEyebrow">// core_stack</span> */}
+
+      <h2 className="skillTitle" data-reveal>
+        My Tech Stack
+      </h2>
+
+      <p
+        className="skillDesc"
+        data-reveal
+        style={{ "--reveal-delay": "80ms" }}
+      >
+        The technologies I use to build backend systems and AI-powered
+        applications.
+      </p>
+
+      <div className="skillGroups">
+        {skillGroups.map((group, index) => (
+          <div
+            className="skillGroup"
+            key={group.category}
+            data-reveal
+            style={{ "--reveal-delay": `${120 + index * 100}ms` }}
+          >
+            <div className="skillGroupHeader">
+              <h3 className="skillGroupLabel">{group.category}</h3>
+              <span className="skillGroupLine" />
+            </div>
+
+            <div className="skillList">
+              {group.items.map((item) => (
+                <div className="skillChip" key={item.name}>
+                  {item.img ? (
+                    <img src={item.img} alt="" className="skillIcon" />
+                  ) : (
+                    <span className="skillInitials">
+                      {getInitials(item.name)}
+                    </span>
+                  )}
+
+                  <span className="skillName">{item.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="skillBar">
-          <img src={css} alt="CSS" className="skillBarImg" />
-          <div className="skillBarText">
-            <h2>CSS</h2>
-            <p>CSS, or Cascading Style Sheets, beautifies web pages by styling HTML elements, enhancing their appearance and layout.</p>
-          </div>
-        </div>
-        <div className="skillBar">
-          <img src={react} alt="REACT" className="skillBarImg" />
-          <div className="skillBarText">
-            <h2>REACT JS</h2>
-            <p>React.js simplifies web development by efficiently managing user interfaces through its component-based architecture.</p>
-          </div>
-        </div>
-        <div className="skillBar">
-          <img src={java} alt="JAVA" className="skillBarImg" />
-          <div className="skillBarText">
-            <h2>JAVA PROGRAMMING</h2>
-            <p>Java programming enables versatile and scalable application development with its robust performance and extensive library support.</p>
-          </div>
-        </div>
-        <div className="skillBar">
-          <img src={springboot} alt="SPRINGBOOT" className="skillBarImg" />
-          <div className="skillBarText">
-            <h2>SPRINGBOOT</h2>
-            <p>Spring Boot streamlines Java application development with its ready-to-use components, simplifying the creation of robust, production-grade applications.</p>
-          </div>
-        </div>
-        <div className="skillBar">
-          <img src={postgres} alt="POSTGRESQL" className="skillBarImg" />
-          <div className="skillBarText">
-            <h2>POSTGRE SQL</h2>
-            <p>PostgreSQL is a reliable open-source relational database management system (RDBMS) widely used for its advanced features and flexibility in managing data.</p>
-          </div>
-        </div>
-        <div className="skillBar">
-          <img src={mysql} alt="MYSQL" className="skillBarImg" />
-          <div className="skillBarText">
-            <h2>MYSQL</h2>
-            <p>MySQL is a popular open-source RDBMS prized for its ease of use and scalability, making it a preferred choice for various applications.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

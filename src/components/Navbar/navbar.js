@@ -1,170 +1,224 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import { Link } from "react-scroll";
-import contact from "./contact.jpg";
-import menu from "./menu.png";
-import me from "./profile.jpg";
-import fme from "./fprofile.jpg";
+import { Menu, X } from "lucide-react";
+import me from "./profile 2.JPG";
+import fme from "./profile 2.JPG";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [isImageOpen, setIsImageOpen] = useState(false);
 
-  function expandImage() {
-    const fullImage = document.querySelector(".full-image-container");
-    if (fullImage.style.display === "block") {
-      fullImage.style.display = "none";
-    } else {
-      fullImage.style.display = "block";
-    }
+  useEffect(() => {
+    if (!isImageOpen) return;
 
-    fullImage.addEventListener("click", function () {
-      fullImage.style.display = "none";
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsImageOpen(false);
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isImageOpen]);
+
+  const closeMenu = () => setShowMenu(false);
+
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({
+      behavior: "smooth",
     });
-  }
+    closeMenu();
+  };
+
+  const handleProfileKeyDown = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setIsImageOpen(true);
+    }
+  };
 
   return (
-    <nav className="navbar">
-      <img src={me} alt="logo" className="logo" onClick={expandImage} />
-      <div class="full-image-container">
-        <img src={fme} alt="full" class="full-image" />
-      </div>
-      <div className="menu">
-        <Link
-          activeClass="active"
-          to="intro"
-          spy={true}
-          smooth={true}
-          offset={-100}
-          duration={1000}
-          className="menuListItem"
-        >
-          Home
-        </Link>
-        <Link
-          activeClass="active"
-          to="skills"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={1000}
-          className="menuListItem"
-        >
-          Skills
-        </Link>
-        <Link
-          activeClass="active"
-          to="tools"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={1000}
-          className="menuListItem"
-        >
-          Tools
-        </Link>
-        <Link
-          activeClass="active"
-          to="works"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={1000}
-          className="menuListItem"
-        >
-          Works
-        </Link>
-        <Link
-          activeClass="active"
-          to="resume"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={1000}
-          className="menuListItem"
-        >
-          Resume
-        </Link>
-      </div>
-      <button
-        className="menuBtn"
-        onClick={() => {
-          document
-            .getElementById("contact")
-            .scrollIntoView({ behavior: "smooth" });
-        }}
-      >
-        <img src={contact} alt="" className="menuImg" /> Contact Me
-      </button>
+    <>
+      <nav className="navbar">
+        <img
+          src={me}
+          alt="Profile"
+          className="logo"
+          onClick={() => setIsImageOpen(true)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={handleProfileKeyDown}
+        />
 
-      <img
-        src={menu}
-        alt="menu"
-        className="mobMenu"
-        onClick={() => setShowMenu(!showMenu)}
-      />
-      <div className="navMenu" style={{ display: showMenu ? "flex" : "none" }}>
-        <Link
-          activeClass="active"
-          to="intro"
-          spy={true}
-          smooth={true}
-          offset={-100}
-          duration={1000}
-          className="listItem"
-          onClick={() => setShowMenu(false)}
+        <div className="menu">
+          <Link
+            activeClass="active"
+            to="intro"
+            spy={true}
+            smooth={true}
+            offset={-100}
+            duration={1000}
+            className="menuListItem"
+          >
+            Home
+          </Link>
+
+          <Link
+            activeClass="active"
+            to="skills"
+            spy={true}
+            smooth={true}
+            offset={-50}
+            duration={1000}
+            className="menuListItem"
+          >
+            Stack
+          </Link>
+
+          <Link
+            activeClass="active"
+            to="works"
+            spy={true}
+            smooth={true}
+            offset={-50}
+            duration={1000}
+            className="menuListItem"
+          >
+            Works
+          </Link>
+
+          <Link
+            activeClass="active"
+            to="resume"
+            spy={true}
+            smooth={true}
+            offset={-50}
+            duration={1000}
+            className="menuListItem"
+          >
+            Resume
+          </Link>
+        </div>
+
+        <button className="menuBtn" onClick={scrollToContact}>
+          Contact Me
+        </button>
+
+        <button
+          type="button"
+          className="mobMenu"
+          onClick={() => setShowMenu((prev) => !prev)}
+          aria-label={
+            showMenu ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={showMenu}
+          aria-controls="mobile-navigation"
         >
-          Home
-        </Link>
-        <Link
-          activeClass="active"
-          to="skills"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={1000}
-          className="listItem"
-          onClick={() => setShowMenu(false)}
+          {showMenu ? <X size={26} /> : <Menu size={26} />}
+        </button>
+
+        <div
+          id="mobile-navigation"
+          className="navMenu"
+          style={{ display: showMenu ? "flex" : "none" }}
         >
-          About
-        </Link>
-        <Link
-          activeClass="active"
-          to="works"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={1000}
-          className="listItem"
-          onClick={() => setShowMenu(false)}
+          <Link
+            activeClass="active"
+            to="intro"
+            spy={true}
+            smooth={true}
+            offset={-100}
+            duration={1000}
+            className="listItem"
+            onClick={closeMenu}
+          >
+            Home
+          </Link>
+
+          <Link
+            activeClass="active"
+            to="skills"
+            spy={true}
+            smooth={true}
+            offset={-50}
+            duration={1000}
+            className="listItem"
+            onClick={closeMenu}
+          >
+            Stack
+          </Link>
+
+          <Link
+            activeClass="active"
+            to="works"
+            spy={true}
+            smooth={true}
+            offset={-50}
+            duration={1000}
+            className="listItem"
+            onClick={closeMenu}
+          >
+            Works
+          </Link>
+
+          <Link
+            activeClass="active"
+            to="resume"
+            spy={true}
+            smooth={true}
+            offset={-50}
+            duration={1000}
+            className="listItem"
+            onClick={closeMenu}
+          >
+            Resume
+          </Link>
+
+          <Link
+            activeClass="active"
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={-50}
+            duration={1000}
+            className="listItem"
+            onClick={closeMenu}
+          >
+            Contact
+          </Link>
+        </div>
+      </nav>
+
+      {isImageOpen && (
+        <div
+          className="full-image-container"
+          onClick={() => setIsImageOpen(false)}
         >
-          Works
-        </Link>
-        <Link
-          activeClass="active"
-          to="resume"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={1000}
-          className="listItem"
-          onClick={() => setShowMenu(false)}
-        >
-          Resume
-        </Link>
-        <Link
-          activeClass="active"
-          to="contact"
-          spy={true}
-          smooth={true}
-          offset={-50}
-          duration={1000}
-          className="listItem"
-          onClick={() => setShowMenu(false)}
-        >
-          About
-        </Link>
-      </div>
-    </nav>
+          <button
+            type="button"
+            className="image-close"
+            onClick={() => setIsImageOpen(false)}
+            aria-label="Close profile image"
+          >
+            &times;
+          </button>
+
+          <img
+            src={fme}
+            alt="Expanded profile"
+            className="full-image"
+            onClick={(event) => event.stopPropagation()}
+          />
+        </div>
+      )}
+    </>
   );
 };
 
